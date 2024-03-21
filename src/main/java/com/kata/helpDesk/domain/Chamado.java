@@ -19,22 +19,27 @@ import jakarta.persistence.ManyToOne;
 public class Chamado implements Serializable {
 
 	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
+
 	@JsonFormat(pattern = "dd/MM/yyyy")
 	private LocalDate dataAbertura = LocalDate.now();
+
 	@JsonFormat(pattern = "dd/MM/yyyy")
 	private LocalDate dataFechamento = LocalDate.now();
+
 	private Prioridade prioridade;
 	private Status status;
-	private String tirulos;
+
+	private String titulos;
 	private String observacoes;
 
 	@ManyToOne
 	@JoinColumn(name = "tecnico_id")
 	private Tecnico tecnico;
-	
+
 	@ManyToOne
 	@JoinColumn(name = "cliente_id")
 	private Cliente cliente;
@@ -45,7 +50,7 @@ public class Chamado implements Serializable {
 		this.id = id;
 		this.prioridade = prioridade;
 		this.status = status;
-		this.tirulos = tirulos;
+		this.titulos = tirulos;
 		this.observacoes = observacoes;
 		this.tecnico = tecnico;
 		this.cliente = cliente;
@@ -91,12 +96,12 @@ public class Chamado implements Serializable {
 		this.status = status;
 	}
 
-	public String getTirulos() {
-		return tirulos;
+	public String getTitulos() {
+		return titulos;
 	}
 
-	public void setTirulos(String tirulos) {
-		this.tirulos = tirulos;
+	public void setTitulos(String titulos) {
+		this.titulos = titulos;
 	}
 
 	public String getObservacoes() {
@@ -126,7 +131,7 @@ public class Chamado implements Serializable {
 	@Override
 	public int hashCode() {
 		return Objects.hash(cliente, dataAbertura, dataFechamento, id, observacoes, prioridade, status, tecnico,
-				tirulos);
+				titulos);
 	}
 
 	@Override
@@ -142,7 +147,7 @@ public class Chamado implements Serializable {
 				&& Objects.equals(dataFechamento, other.dataFechamento) && Objects.equals(id, other.id)
 				&& Objects.equals(observacoes, other.observacoes) && prioridade == other.prioridade
 				&& status == other.status && Objects.equals(tecnico, other.tecnico)
-				&& Objects.equals(tirulos, other.tirulos);
+				&& Objects.equals(titulos, other.titulos);
 	}
 
 }

@@ -1,7 +1,8 @@
 package com.kata.helpDesk.domain.enums;
 
 public enum Prioridade {
-	ABERTO(0, "ABERTO"), ANDAMENTO(1, "ANDAMENTO"), ENCERRADO(2, "ENCERRADO");
+	BAIXA(0, "BAIXA"), MEDIO(1, "MEDIO"), ENCERRADO(2, "ALTA");
+	
 
 	private Integer codigo;
 	private String descricao;

@@ -1,7 +1,7 @@
 package com.kata.helpDesk.domain.enums;
 
 public enum Status {
-	BAIXA(0, "BAIXA"), MEDIO(1, "MEDIO"), ENCERRADO(2, "ALTA");
+	ABERTO(0, "ABERTO"), ANDAMENTO(1, "ANDAMENTO"), ENCERRADO(2, "ENCERRADO");
 
 	private Integer codigo;
 	private String descricao;
