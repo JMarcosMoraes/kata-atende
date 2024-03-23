@@ -3,6 +3,7 @@ package com.kata.helpDesk.domain;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.kata.helpDesk.domain.enums.Perfil;
 
 import jakarta.persistence.Entity;
@@ -15,15 +16,16 @@ public class Cliente extends Pessoa {
 
 	public Cliente() {
 		super();
-		addPerfi(Perfil.CLIENTE);
+		addPerfil(Perfil.CLIENTE);
 	}
 
 	@OneToMany(mappedBy = "cliente")
+	@JsonIgnore
 	private List<Chamado> chamados = new ArrayList<>();
 
 	public Cliente(Integer id, String nome, String cpf, String email, String senha) {
 		super(id, nome, cpf, email, senha);
-		addPerfi(Perfil.CLIENTE);
+		addPerfil(Perfil.CLIENTE);
 	}
 
 	public List<Chamado> getChamados() {

@@ -6,8 +6,10 @@ public enum Status {
 	private Integer codigo;
 	private String descricao;
 
-	Status(int i, String string) {
-		// TODO Auto-generated constructor stub
+
+	private Status(Integer codigo, String descricao) {
+		this.codigo = codigo;
+		this.descricao = descricao;
 	}
 
 	public Integer getCodigo() {

@@ -12,10 +12,11 @@ import com.kata.helpDesk.services.DBService;
 public class TestConfig {
 
 	@Autowired
-	private DBService dBService; 
-	
-	@Bean
-	public void instaciaDB() {
-		this.dBService.instanciaDB();
+	private DBService dbService;
+
+    @Bean
+    public boolean instanciaDB() {
+		this.dbService.instanciaDB();
+		return false;
 	}
 }
