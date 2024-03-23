@@ -6,7 +6,9 @@ public enum Perfil {
 	private Integer codigo;
 	private String descricao;
 
-	Perfil(int i, String string) {
+	private Perfil(Integer codigo, String descricao) {
+		this.codigo = codigo;
+		this.descricao = descricao;
 	}
 
 	public Integer getCodigo() {

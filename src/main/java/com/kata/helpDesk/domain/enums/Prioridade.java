@@ -1,13 +1,15 @@
 package com.kata.helpDesk.domain.enums;
 
 public enum Prioridade {
-	BAIXA(0, "BAIXA"), MEDIO(1, "MEDIO"), ENCERRADO(2, "ALTA");
+	BAIXA(0, "BAIXA"), MEDIA(1, "MEDIA"), ALTA(2, "ALTA");
 	
 
 	private Integer codigo;
 	private String descricao;
 
-	Prioridade(int i, String string) {
+	private Prioridade(Integer codigo, String descricao) {
+		this.codigo = codigo;
+		this.descricao = descricao;
 	}
 
 	public Integer getCodigo() {
