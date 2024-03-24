@@ -4,6 +4,10 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.kata.helpDesk.domain.Tecnico;
 
-public interface TecnicoRepository extends JpaRepository<Tecnico, Integer>{
 
+public interface TecnicoRepository extends JpaRepository<Tecnico, Integer>{
+	
+
+	
+	
 }
