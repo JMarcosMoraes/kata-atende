@@ -14,6 +14,8 @@ import com.kata.helpDesk.repositories.TecnicoRepository;
 import com.kata.helpDesk.services.exceptions.DataIntegrityViolationException;
 import com.kata.helpDesk.services.exceptions.ObjectnotFoundException;
 
+import jakarta.validation.Valid;
+
 @Service
 public class TecnicoService {
 
@@ -39,6 +41,14 @@ public class TecnicoService {
 		return repository.save(newObj);
 	}
 
+	public Tecnico update(Integer id, @Valid TecnicoDTO objDto) {
+		objDto.setId(id);
+		Tecnico oldObj = findById(id);
+		validarPorCPfEmail(objDto);
+		oldObj = new Tecnico(objDto);
+		return repository.save(oldObj);
+	}
+	
 	private void validarPorCPfEmail(TecnicoDTO objDto) {
 		Optional<Pessoa> obj = pessoaRepository.findByCpf(objDto.getCpf());
 		if (obj.isPresent() && obj.get().getId() != objDto.getId()) {
@@ -52,4 +62,6 @@ public class TecnicoService {
 		}
 
 	}
+
+
 }
