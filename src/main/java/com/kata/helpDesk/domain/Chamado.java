@@ -33,7 +33,7 @@ public class Chamado implements Serializable {
 	private Prioridade prioridade;
 	private Status status;
 
-	private String titulos;
+	private String titulo;
 	private String observacoes;
 
 	@ManyToOne
@@ -48,13 +48,13 @@ public class Chamado implements Serializable {
 		super();
 	}
 
-	public Chamado(Integer id, Prioridade prioridade, Status status, String tirulos, String observacoes,
+	public Chamado(Integer id, Prioridade prioridade, Status status, String tirulo, String observacoes,
 			Tecnico tecnico, Cliente cliente) {
 		super();
 		this.id = id;
 		this.prioridade = prioridade;
 		this.status = status;
-		this.titulos = tirulos;
+		this.titulo = tirulo;
 		this.observacoes = observacoes;
 		this.tecnico = tecnico;
 		this.cliente = cliente;
@@ -100,12 +100,12 @@ public class Chamado implements Serializable {
 		this.status = status;
 	}
 
-	public String getTitulos() {
-		return titulos;
+	public String getTitulo() {
+		return titulo;
 	}
 
-	public void setTitulos(String titulos) {
-		this.titulos = titulos;
+	public void setTitulo(String titulo) {
+		this.titulo = titulo;
 	}
 
 	public String getObservacoes() {
@@ -135,7 +135,7 @@ public class Chamado implements Serializable {
 	@Override
 	public int hashCode() {
 		return Objects.hash(cliente, dataAbertura, dataFechamento, id, observacoes, prioridade, status, tecnico,
-				titulos);
+				titulo);
 	}
 
 	@Override
@@ -151,7 +151,7 @@ public class Chamado implements Serializable {
 				&& Objects.equals(dataFechamento, other.dataFechamento) && Objects.equals(id, other.id)
 				&& Objects.equals(observacoes, other.observacoes) && prioridade == other.prioridade
 				&& status == other.status && Objects.equals(tecnico, other.tecnico)
-				&& Objects.equals(titulos, other.titulos);
+				&& Objects.equals(titulo, other.titulo);
 	}
 
 }
