@@ -6,13 +6,13 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+import javax.validation.constraints.NotNull;
+
 import org.hibernate.validator.constraints.br.CPF;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.kata.helpDesk.domain.Cliente;
 import com.kata.helpDesk.domain.enums.Perfil;
-
-import jakarta.validation.constraints.NotNull;
 
 public class ClienteDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
