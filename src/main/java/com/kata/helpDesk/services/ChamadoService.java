@@ -38,17 +38,17 @@ public class ChamadoService {
 	}
 
 	public Chamado create(ChamadoDTO obj) {
-		return repository.save(newChamado(obj));
+		return repository.save(newchamado(obj));
 	}
 
 	public Chamado update(Integer id, @Valid ChamadoDTO objDTO) {
 		objDTO.setId(id);
 		Chamado oldObj = findById(id);
-		oldObj = newChamado(objDTO);
+		oldObj = newchamado(objDTO);
 		return repository.save(oldObj);
 	}
 
-	private Chamado newChamado(ChamadoDTO obj) {
+	private Chamado newchamado(ChamadoDTO obj) {
 		Tecnico tecnico = tecnicoService.findById(obj.getTecnico());
 		Cliente cliente = clienteService.findById(obj.getCliente());
 		
