@@ -42,11 +42,11 @@ public class Cliente extends Pessoa {
 		addPerfil(Perfil.CLIENTE);
 	}
 
-	public List<Chamado> getChamados() {
+	public List<Chamado> getchamados() {
 		return chamados;
 	}
 
-	public void setChamados(List<Chamado> chamados) {
+	public void setchamados(List<Chamado> chamados) {
 		this.chamados = chamados;
 	}
 

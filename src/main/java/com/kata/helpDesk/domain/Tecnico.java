@@ -43,7 +43,7 @@ public class Tecnico extends Pessoa{
 		addPerfil(Perfil.CLIENTE);
 	}
 
-	public List<Chamado> getChamados() {
+	public List<Chamado> getchamado() {
 		return chamados;
 	}
 
