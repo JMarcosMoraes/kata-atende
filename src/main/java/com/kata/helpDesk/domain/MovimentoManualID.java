@@ -111,8 +111,4 @@ public class MovimentoManualID implements Serializable {
 				&& Objects.equals(produtoCosif, other.produtoCosif);
 	}
 	
-	
-	
-
-	
 }
