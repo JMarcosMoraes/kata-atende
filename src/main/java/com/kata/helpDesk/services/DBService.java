@@ -8,12 +8,15 @@ import org.springframework.stereotype.Service;
 
 import com.kata.helpDesk.domain.Chamado;
 import com.kata.helpDesk.domain.Cliente;
+import com.kata.helpDesk.domain.Produto;
 import com.kata.helpDesk.domain.Tecnico;
 import com.kata.helpDesk.domain.enums.Perfil;
 import com.kata.helpDesk.domain.enums.Prioridade;
+import com.kata.helpDesk.domain.enums.SituacaoStatus;
 import com.kata.helpDesk.domain.enums.Status;
 import com.kata.helpDesk.repositories.ChamadoRepository;
 import com.kata.helpDesk.repositories.PessoaRepository;
+import com.kata.helpDesk.repositories.ProdutoRepository;
 
 @Service
 public class DBService {
@@ -23,6 +26,9 @@ public class DBService {
 	
 	@Autowired
 	private PessoaRepository pessoaRepository;
+	
+	@Autowired
+	private ProdutoRepository produtoRepository;
 	
 	@Autowired
 	private BCryptPasswordEncoder encoder;
@@ -64,7 +70,16 @@ public class DBService {
 
 		pessoaRepository.saveAll(Arrays.asList(tec1, tec2, tec3, tec4, tec5, cli1, cli2, cli3, cli4, cli5, cli6));
 		chamadoRepository.saveAll(Arrays.asList(c1, c2, c3, c4, c5, c6,c7));
-
+		
+		Produto prod1 = new Produto("1", "Credito Pessoal", SituacaoStatus.DESENVOLVIMENTO);
+		Produto prod2 = new Produto("2", "Financiamento Imobiliario", SituacaoStatus.HOMOLOGACAO);
+		Produto prod3 = new Produto("3", "Financiamento Auto", SituacaoStatus.HOMOLOGACAO);
+		Produto prod4 = new Produto("4", "Financiamento Agricula", SituacaoStatus.PRODUCAO);
+		Produto prod5 = new Produto("5", "Crédito FGTS", SituacaoStatus.DESENVOLVIMENTO);
+		Produto prod6 = new Produto("PX0", "PIX Parcelado", SituacaoStatus.DESENVOLVIMENTO);
+		Produto prod7 = new Produto("CP1", "Cadstro Positivo", SituacaoStatus.DESENVOLVIMENTO);
+		
+		produtoRepository.saveAll(Arrays.asList(prod1,prod2,prod3,prod4,prod5,prod6,prod7));
 	}
 
 }
