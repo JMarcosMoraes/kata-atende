@@ -15,15 +15,15 @@ public class MovimentoManualID implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	@Column(name = "DAT_MES")
+	@Column(name = "DAT_MES", precision = 2)
 	@NotNull
 	private Integer dataMes;
 
-	@Column(name = "DAT_ANO")
+	@Column(name = "DAT_ANO", precision = 4)
 	@NotNull
 	private Integer dataAno;
 
-	@Column(name = "NUM_LANCAMENTO")
+	@Column(name = "NUM_LANCAMENTO", precision = 18)
 	@NotNull
 	private Integer numeroLancamento;
 

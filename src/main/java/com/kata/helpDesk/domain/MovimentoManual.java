@@ -18,24 +18,24 @@ public class MovimentoManual implements Serializable{
 	@EmbeddedId
 	private MovimentoManualID MovimentoManualID;
 	
-	@Column(name = "DES_DESCRICAO")
+	@Column(name = "DES_DESCRICAO", length = 30)
 	private String descricao;
 	
 	@Column(name = "DAT_MOVIMENTO")
 	private LocalDate dataMovimento;
 	
-	@Column(name = "COD_USUARIO")
+	@Column(name = "COD_USUARIO", length = 15)
 	private String cod_usuario;
 	
-	@Column(name = "VAL_VALOR")
-	private Long valor;
+	@Column(name = "VAL_VALOR", precision = 10, scale = 2)
+	private Double valor;
 	
 	public MovimentoManual() {
 		super();
 	}
 	
 	public MovimentoManual(com.kata.helpDesk.domain.MovimentoManualID movimentoManualID, String descricao,
-			LocalDate dataMovimento, Long valor) {
+			LocalDate dataMovimento, Double valor) {
 		super();
 		MovimentoManualID = movimentoManualID;
 		this.descricao = descricao;
@@ -77,11 +77,11 @@ public class MovimentoManual implements Serializable{
 		this.cod_usuario = cod_usuario;
 	}
 
-	public Long getValor() {
+	public Double getValor() {
 		return valor;
 	}
 
-	public void setValor(Long valor) {
+	public void setValor(Double valor) {
 		this.valor = valor;
 	}
 

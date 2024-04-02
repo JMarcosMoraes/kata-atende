@@ -8,12 +8,14 @@ import javax.persistence.Embeddable;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import com.kata.helpDesk.domain.dtos.ProdutoCosifIDDTO;
+
 @Embeddable
 public class ProdutoCosifID  implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 
-	@Column(name = "COD_COSIF")
+	@Column(name = "COD_COSIF", length = 11)
 	private String codCosif;
 		
 	@ManyToOne
@@ -28,6 +30,12 @@ public class ProdutoCosifID  implements Serializable{
 		super();
 		this.codCosif = codCosif;
 		this.produto = produto;
+	}
+	
+	public ProdutoCosifID(ProdutoCosifIDDTO obj) {
+		super();
+		this.codCosif = obj.getCodCosif();
+		this.produto = new Produto(obj.getProdutoDTO());
 	}
 
 	public String getCodCosif() {

@@ -1,35 +1,28 @@
 package com.kata.helpDesk.domain.enums;
 
 public enum SituacaoStatus {
-	ABERTO(0, "ABERTO"), ANDAMENTO(1, "ANDAMENTO"), ENCERRADO(2, "ENCERRADO");
+	ATIVO('A'),
+	INATIVO('I'),
+	EM_REVISAO('R'),
+	NOVO('N');
 
-	private Integer codigo;
-	private String descricao;
+	private char codigo;
 
-
-	private SituacaoStatus(Integer codigo, String descricao) {
+	private SituacaoStatus(char codigo) {
 		this.codigo = codigo;
-		this.descricao = descricao;
 	}
 
-	public Integer getCodigo() {
+	public char getCodigo() {
 		return codigo;
 	}
 
-	public String getDescricao() {
-		return descricao;
-	}
-
-	public static SituacaoStatus toEnum(Integer cod) {
-		if (cod == null) {
-			return null;
-		}
+	public static SituacaoStatus toEnum(char cod) {
 		for (SituacaoStatus x : SituacaoStatus.values()) {
-			if (cod.equals(x.getCodigo())) {
+			if (cod == x.getCodigo()) {
 				return x;
 			}
 		}
-		throw new IllegalArgumentException("Prioridade Inválido !!");
+		throw new IllegalArgumentException("Situação Status Inválido !!");
 	}
 
 }
