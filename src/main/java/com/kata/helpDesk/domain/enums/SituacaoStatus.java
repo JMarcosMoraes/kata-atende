@@ -1,9 +1,10 @@
 package com.kata.helpDesk.domain.enums;
 
 public enum SituacaoStatus {
-	DESENVOLVIMENTO('D'),
-	HOMOLOGACAO('H'),
-	PRODUCAO('P');
+	ATIVO('A'),
+	INATIVO('I'),
+	EM_REVISAO('R'),
+	NOVO('N');
 
 	private char codigo;
 
@@ -21,7 +22,7 @@ public enum SituacaoStatus {
 				return x;
 			}
 		}
-		throw new IllegalArgumentException("Prioridade Inválido !!");
+		throw new IllegalArgumentException("Situação Status Inválido !!");
 	}
 
 }

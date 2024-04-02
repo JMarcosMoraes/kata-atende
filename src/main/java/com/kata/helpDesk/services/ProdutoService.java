@@ -29,7 +29,7 @@ public class ProdutoService {
 	}
 
 	public Produto create(ProdutoDTO objDto) {
-		
+
 		Produto newObj = new Produto(objDto);
 		newObj.setCod(nextCode(repository.findTopByOrderByCodDesc().getCod()));
 		return repository.save(newObj);
@@ -46,12 +46,9 @@ public class ProdutoService {
 		Produto obj = findById(cod);
 		repository.delete(obj);
 	}
-	
-	 private String nextCode(String code) {
-		 Integer nextCode = (Integer.parseInt(code) + 1);
-		 return nextCode.toString();
-		 
-	 }
 
-
+	private String nextCode(String code) {
+		Integer nextCode = (Integer.parseInt(code) + 1);
+		return nextCode.toString();
+	}
 }

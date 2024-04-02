@@ -68,7 +68,5 @@ public class ClienteService {
 		if (obj.isPresent() && obj.get().getId() != objDto.getId()) {
 			throw new DataIntegrityViolationException("E-mail Já cadastrado no sistema!");
 		}
-
 	}
-
 }

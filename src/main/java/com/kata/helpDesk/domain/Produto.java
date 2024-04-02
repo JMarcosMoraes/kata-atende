@@ -5,32 +5,28 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
 
-import org.hibernate.validator.constraints.Length;
-
 import com.kata.helpDesk.domain.dtos.ProdutoDTO;
 import com.kata.helpDesk.domain.enums.SituacaoStatus;
 
 @Entity
 public class Produto {
-	
+
 	@Id
-	@Column(name = "COD_PRODUTO")
-	@Length(max = 4) 
+	@Column(name = "COD_PRODUTO", length = 4)
 	private String cod;
-	
-	@Column(name = "DES_PRODUTO")
+
+	@Column(name = "DES_PRODUTO", length = 30)
 	@NotNull
-	@Length(max = 30) 
 	private String descricao;
-	
-	@Column(name = "STA_STATUS")
+
+	@Column(name = "STA_STATUS", length = 1)
 	@NotNull
 	private char status;
 
 	public String getCod() {
 		return cod;
 	}
-	
+
 	public Produto() {
 		super();
 	}
@@ -41,7 +37,6 @@ public class Produto {
 		this.status = objDto.getStatus().getCodigo();
 	}
 
-	
 	public Produto(String cod, String descricao, SituacaoStatus status) {
 		super();
 		this.cod = cod;

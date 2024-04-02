@@ -21,7 +21,7 @@ public class ProdutoDTO implements Serializable{
 
 	public ProdutoDTO() {
 		super();
-		this.status = SituacaoStatus.DESENVOLVIMENTO;
+		this.status = SituacaoStatus.INATIVO;
 	}
 
 	public ProdutoDTO(Produto obj) {

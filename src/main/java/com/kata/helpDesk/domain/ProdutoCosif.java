@@ -9,32 +9,48 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
+import org.modelmapper.ModelMapper;
+
+import com.kata.helpDesk.domain.dtos.ProdutoCosifDTO;
+import com.kata.helpDesk.domain.enums.Classificacao;
+import com.kata.helpDesk.domain.enums.SituacaoStatus;
+
 @Entity()
 @Table(name = "PRODUTO_COSIF")
 public class ProdutoCosif implements Serializable{
 
 	private static final long serialVersionUID = 1L;
-
+	
 	@EmbeddedId
 	private ProdutoCosifID produtoCosifID; 
 	
-	@Column(name = "COD_CLASSIFICACAO")
+	@Column(name = "COD_CLASSIFICACAO", length = 6)
 	@NotNull
 	private String codClassificacao;
 	
-	@Column(name = "STA_STATUS")
+	@Column(name = "STA_STATUS", length = 1)
 	@NotNull
-	private char status;
+	private char situacaoStatus;
 
 	public ProdutoCosif() {
 		super();
 	}
 
-	public ProdutoCosif(ProdutoCosifID produtoCosifID, @NotNull String codClassificacao, @NotNull char status) {
+	public ProdutoCosif(ProdutoCosifID produtoCosifID, @NotNull Classificacao classificacao, @NotNull SituacaoStatus situacaoStatus) {
 		super();
 		this.produtoCosifID = produtoCosifID;
-		this.codClassificacao = codClassificacao;
-		this.status = status;
+		this.codClassificacao = classificacao.getDescricao();
+		this.situacaoStatus = situacaoStatus.getCodigo();
+		
+	}
+	
+	public ProdutoCosif(ProdutoCosifDTO objDto) {
+		super();
+		ModelMapper modelMapper = new ModelMapper();
+		this.produtoCosifID = modelMapper.map(objDto.getProdutoCosifID(), ProdutoCosifID.class);
+		this.produtoCosifID.setProduto(modelMapper.map(objDto.getProdutoCosifID().getProdutoDTO(), Produto.class));
+		this.codClassificacao = objDto.getCodClassificacao();
+		this.situacaoStatus = SituacaoStatus.NOVO.getCodigo();
 	}
 
 	public ProdutoCosifID getProdutoCosifID() {
@@ -53,17 +69,17 @@ public class ProdutoCosif implements Serializable{
 		this.codClassificacao = codClassificacao;
 	}
 
-	public char getStatus() {
-		return status;
+	public char getSituacaoStatus() {
+		return situacaoStatus;
 	}
 
-	public void setStatus(char status) {
-		this.status = status;
+	public void setSituacaoStatus(char situacaoStatus) {
+		this.situacaoStatus = situacaoStatus;
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(codClassificacao, produtoCosifID, status);
+		return Objects.hash(codClassificacao, produtoCosifID, situacaoStatus);
 	}
 
 	@Override
@@ -76,11 +92,7 @@ public class ProdutoCosif implements Serializable{
 			return false;
 		ProdutoCosif other = (ProdutoCosif) obj;
 		return Objects.equals(codClassificacao, other.codClassificacao)
-				&& Objects.equals(produtoCosifID, other.produtoCosifID) && status == other.status;
+				&& Objects.equals(produtoCosifID, other.produtoCosifID) && situacaoStatus == other.situacaoStatus;
 	}
-	
-	
-	
-	
 	
 }
