@@ -18,7 +18,7 @@ import com.kata.helpDesk.domain.enums.Status;
 @Entity()
 public class Chamado implements Serializable {
 
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 7336457380769397406L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

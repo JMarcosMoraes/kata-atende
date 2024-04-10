@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
@@ -31,9 +32,10 @@ public class TecnicoResource {
 	private TecnicoService service;
 
 	@GetMapping(value = "/{id}")
-	public ResponseEntity<Tecnico> findById(@PathVariable Integer id) {
+	public ResponseEntity<TecnicoDTO> findById(@PathVariable Integer id) {
 		Tecnico obj = service.findById(id);
-		return ResponseEntity.ok().body(obj);
+		TecnicoDTO tecnicoDto = new TecnicoDTO(obj);
+		return ResponseEntity.ok().body(tecnicoDto);
 	}
 	
 	@GetMapping
@@ -54,7 +56,8 @@ public class TecnicoResource {
 	}
 	
 	@PreAuthorize("hasAnyRole('ADMIN')")
-	@PutMapping(value = "/{id}")
+	//@PutMapping(value = "/{id}")
+	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
 	public ResponseEntity<TecnicoDTO> update(@PathVariable Integer id, @Valid @RequestBody TecnicoDTO objDto){
 		
 		Tecnico obj = service.update(id, objDto);

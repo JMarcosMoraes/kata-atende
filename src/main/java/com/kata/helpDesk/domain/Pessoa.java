@@ -22,8 +22,8 @@ import com.kata.helpDesk.domain.enums.Perfil;
 @Entity()
 public abstract class Pessoa implements Serializable {
 	
-	private static final long serialVersionUID = 1L;
-	
+	private static final long serialVersionUID = 2123437582733837699L;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	protected Integer id;

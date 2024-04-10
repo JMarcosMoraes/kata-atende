@@ -7,22 +7,24 @@ import java.util.stream.Collectors;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.codehaus.jackson.annotate.JsonIgnore;
+
 import com.kata.helpDesk.domain.dtos.ClienteDTO;
 import com.kata.helpDesk.domain.enums.Perfil;
 
 @Entity
 public class Cliente extends Pessoa {
 
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 6688772141873811731L;
 
 	public Cliente() {
 		super();
 		addPerfil(Perfil.CLIENTE);
 	}
 
-	@OneToMany(mappedBy = "cliente")
+	
 	@JsonIgnore
+	@OneToMany(mappedBy = "cliente")
 	private List<Chamado> chamados = new ArrayList<>();
 
 	public Cliente(Integer id, String nome, String cpf, String email, String senha) {

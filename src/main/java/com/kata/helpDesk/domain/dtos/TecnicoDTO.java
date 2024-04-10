@@ -15,18 +15,24 @@ import com.kata.helpDesk.domain.Tecnico;
 import com.kata.helpDesk.domain.enums.Perfil;
 
 public class TecnicoDTO implements Serializable {
-	private static final long serialVersionUID = 1L;
+	
+	private static final long serialVersionUID = -8024144040678286542L;
 
 	protected Integer id;
+	
 	@NotNull(message = "O campo NOME é requerido")
 	protected String nome;
+
 	@NotNull(message = "O campo CPF é requerido")
 	@CPF
 	protected String cpf;
+	
 	@NotNull(message = "O campo EMAIL é requerido")
 	protected String email;
+
 	@NotNull(message = "O campo SENHA é requerido")
 	protected String senha;
+	
 	protected Set<Integer> perfis = new HashSet<>();
 
 	@JsonFormat(pattern = "dd/MM/yyyy")
